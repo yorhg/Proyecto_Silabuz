@@ -1,6 +1,7 @@
 import pandas as pd
 import csv
 import time
+import os
 
 #Opciones del menú
 
@@ -103,6 +104,19 @@ def Opcion_7():
         Opcion_7()
 
 
+def opcion_4():
+    l1 = []
+    with open(r'Libros.csv', 'r') as fp:
+        l1 = fp.readlines()
+        print('-----------------------LIBROS-----------------------\n')
+        datos=pd.read_csv('Libros.csv', header=0)
+        print(datos)
+        num = int(input("Ingrese el codigo del libro: "))
+    with open(r"Libros.csv", 'w') as fp:
+        for number, line in enumerate(l1):
+            if number not in [num]:
+                fp.write(line)
+                
 def run():
     #encabezado()
     menu()
@@ -120,7 +134,8 @@ def run():
         Opcion_3()
 
     elif command == '4':
-        pass
+        opcion_4()
+
     elif command == '5':
         Opcion_5()
 
@@ -144,3 +159,7 @@ def run():
         run()
 
 run()
+
+
+
+
