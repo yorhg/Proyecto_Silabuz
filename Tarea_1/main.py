@@ -121,11 +121,12 @@ def opcion_4():
             print('-----------------------LIBROS-----------------------\n')
             datos=pd.read_csv('Libros.csv', header=0)
             print(datos)
-            num = int(input("Ingrese el codigo del libro: "))
+            num = int(input("Ingrese el numero enlistado del libro: "))
         with open(r"Libros.csv", 'w') as fp:
             for number, line in enumerate(l1):
-                if number not in [num]:
+                if number not in [num+1]:
                     fp.write(line)
+
         repetir = input("Escriba 'si' para continuar borrando o 'x' para salir al menu: ")
         if repetir != "si":
             go = False 
