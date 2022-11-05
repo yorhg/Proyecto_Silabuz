@@ -40,11 +40,11 @@ def Opcion_3():
     with open("Libros.csv", "a", newline='') as f:
         ids = {}
         ids['id'] = input('introdusca el ID del libro a agregar:\n-> ')
-        ids['titulo'] = input('introdusca el titulo del libro a agregar:\n-> ')
-        ids['genero'] = input('introdusca el género del libro a agregar:\n-> ')
+        ids['titulo'] = input('introdusca el titulo del libro a agregar(No usar tíldes):\n-> ')
+        ids['genero'] = input('introdusca el género del libro a agregar(No usar tíldes):\n-> ')
         ids['ISBN'] = input('introdusca el ISBN del libro a agregar:\n-> ')
-        ids['editorial'] = input('introdusca el editorial del libro a agregar:\n-> ')
-        ids['autor(es)'] = input('introdusca el autore(es) del libro a agregar:\n-> ')
+        ids['editorial'] = input('introdusca el editorial del libro a agregar(No usar tíldes):\n-> ')
+        ids['autor(es)'] = input('introdusca el autore(es) del libro a agregar(No usar tíldes):\n-> ')
         bibliotecaList.append(ids)
         w = csv.DictWriter(f, bibliotecaList[0].keys())
         for a in bibliotecaList:
