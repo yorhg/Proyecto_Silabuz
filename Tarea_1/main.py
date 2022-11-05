@@ -35,10 +35,12 @@ def Opcion_2():
     datos=pd.read_csv('Libros.csv', header=0)
     print(datos)
 
-def Opcion_3():
 
-    bibliotecaList = []
-    with open("Libros.csv", "a", newline='') as f:
+def Opcion_3():
+    go = True
+    while go == True:
+        
+        bibliotecaList = []
         ids = {}
         ids['id'] = input('introdusca el ID del libro a agregar:\n-> ')
         ids['titulo'] = input('introdusca el titulo del libro a agregar(No usar tíldes):\n-> ')
@@ -47,10 +49,16 @@ def Opcion_3():
         ids['editorial'] = input('introdusca el editorial del libro a agregar(No usar tíldes):\n-> ')
         ids['autor(es)'] = input('introdusca el autore(es) del libro a agregar(No usar tíldes):\n-> ')
         bibliotecaList.append(ids)
-        w = csv.DictWriter(f, bibliotecaList[0].keys())
-        for a in bibliotecaList:
-            w.writerow(a)
-        print(bibliotecaList)
+        with open("Libros.csv", "a", newline='') as f:
+            w = csv.DictWriter(f, bibliotecaList[0].keys())
+            for a in bibliotecaList:
+                w.writerow(a)
+            print(bibliotecaList)
+        repetir = input("Escriba 'si' para continuar registrando o 'x' para salir al menu: ")
+        if repetir != "si":
+            go = False 
+            run()
+
 
 def Opcion_5():
 
@@ -106,16 +114,22 @@ def Opcion_7():
 
 def opcion_4():
     l1 = []
-    with open(r'Libros.csv', 'r') as fp:
-        l1 = fp.readlines()
-        print('-----------------------LIBROS-----------------------\n')
-        datos=pd.read_csv('Libros.csv', header=0)
-        print(datos)
-        num = int(input("Ingrese el codigo del libro: "))
-    with open(r"Libros.csv", 'w') as fp:
-        for number, line in enumerate(l1):
-            if number not in [num]:
-                fp.write(line)
+    go = True
+    while go == True:
+        with open(r'Libros.csv', 'r') as fp:
+            l1 = fp.readlines()
+            print('-----------------------LIBROS-----------------------\n')
+            datos=pd.read_csv('Libros.csv', header=0)
+            print(datos)
+            num = int(input("Ingrese el codigo del libro: "))
+        with open(r"Libros.csv", 'w') as fp:
+            for number, line in enumerate(l1):
+                if number not in [num]:
+                    fp.write(line)
+        repetir = input("Escriba 'si' para continuar borrando o 'x' para salir al menu: ")
+        if repetir != "si":
+            go = False 
+            run()
                 
 def run():
     #encabezado()
