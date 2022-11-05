@@ -77,6 +77,32 @@ def Opcion_6():
     print(datos.sort_values(by='titulo'))
 
 
+def Opcion_7():
+
+    datos = pd.read_csv('Libros.csv')
+    df = pd.DataFrame(datos)
+    
+    print('Seleccionar una opción:\n[1] Buscar por Autor\n[2] Buscar por Editorial\n[3] Buscar por Género')
+    selección = input('Ingresar opción:\n->')
+
+    if selección == '1':
+        Buscador_isbn = input('Escribe el Autor del libro a Buscar:\n->')
+        respuesta = df[df['autor(es)'] == Buscador_isbn]
+        print(respuesta)
+    elif selección == '2':
+        Buscador_tit = input('Escriba el Editorial del libro a buscar:\n->')
+        respuesta = df[df['editorial'] == Buscador_tit]
+        print(respuesta)
+    elif selección == '3':
+        Buscador_tit = input('Escriba el Género del libro a buscar:\n->')
+        respuesta = df[df['genero'] == Buscador_tit]
+        print(respuesta)
+    else:
+        print('Opción inválida')
+        time.sleep(1)
+        Opcion_7()
+
+
 def run():
     #encabezado()
     menu()
@@ -102,7 +128,8 @@ def run():
         Opcion_6()
 
     elif command == '7':
-        pass
+        Opcion_7()
+        
     elif command == '8':
         pass
     elif command == '9':
