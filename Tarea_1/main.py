@@ -18,7 +18,8 @@ def menu():
         '[7]Buscar libros por autor, editorial o género\n', 
         '[8]Buscar libros por número de autores\n',
         '[9]Editar o actualizar datos de un libro\n',
-        '[6]Guardar libros en archivo de disco duro\n'
+        '[10s]Guardar libros en archivo de disco duro\n',
+        '[s]Salir del Menu'
         )
 
 def Opcion_1():
@@ -47,7 +48,14 @@ def Opcion_3():
         ids['genero'] = input('introdusca el género del libro a agregar(No usar tíldes):\n-> ')
         ids['ISBN'] = input('introdusca el ISBN del libro a agregar:\n-> ')
         ids['editorial'] = input('introdusca el editorial del libro a agregar(No usar tíldes):\n-> ')
-        ids['autor(es)'] = input('introdusca el autore(es) del libro a agregar(No usar tíldes):\n-> ')
+        ids['autor(es)'] = []
+        la = True
+        while la == True:
+            autores = input('introdusca el autore(es) del libro a agregar(No usar tíldes) o introduce x para no agregar más:\n-> ')
+            if autores == 'x':
+                la =False          
+            else:
+                ids['autor(es)'].append(autores)        
         bibliotecaList.append(ids)
         with open("Libros.csv", "a", newline='') as f:
             w = csv.DictWriter(f, bibliotecaList[0].keys())
