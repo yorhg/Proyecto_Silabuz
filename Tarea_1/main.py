@@ -51,6 +51,27 @@ def Opcion_3():
             w.writerow(a)
         print(bibliotecaList)
 
+def Opcion_5():
+
+    datos = pd.read_csv('Libros.csv')
+    df = pd.DataFrame(datos)
+    
+    print('Seleccionar una opción:\n[1] Buscar por ISBN\n[2] Buscar por Titulo')
+    selección = input('Ingresar opción:\n->')
+
+    if selección == '1':
+        Buscador_isbn = input('Escribe el ISBN del libro a Buscar:\n->')
+        respuesta = df[df['ISBN'] == Buscador_isbn]
+        print(respuesta)
+    elif selección == '2':
+        Buscador_tit = input('Escriba el titulo del libro a buscar:\n->')
+        respuesta = df[df['titulo'] == Buscador_tit]
+        print(respuesta)
+    else:
+        print('Opción inválida')
+        time.sleep(1)
+        Opcion_5()
+
 def Opcion_6():
     datos=pd.read_csv('Libros.csv', header=0)
     print(datos.sort_values(by='titulo'))
@@ -75,7 +96,8 @@ def run():
     elif command == '4':
         pass
     elif command == '5':
-        pass
+        Opcion_5()
+
     elif command == '6':
         Opcion_6()
 
