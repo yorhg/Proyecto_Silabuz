@@ -2,7 +2,7 @@ import pandas as pd
 import csv
 import time
 import os
-
+import ast
 #Opciones del menú
 
 def menu():
@@ -119,6 +119,16 @@ def Opcion_7():
         time.sleep(1)
         Opcion_7()
 
+def Opcion_8():
+    Buscador = int(input('Ingresa la cantidad de autores:\n->'))
+    datos = pd.read_csv('Libros.csv', header=0)
+    df = pd.DataFrame(datos)
+    respuesta = df['autor(es)']
+    for linea in respuesta:
+        lista = ast.literal_eval(linea)
+        if Buscador == len(lista):
+            asd = df[df['autor(es)'] == linea]
+            print(asd)  
 
 def opcion_4():
     l1 = []
@@ -169,7 +179,8 @@ def run():
         Opcion_7()
         
     elif command == '8':
-        pass
+        Opcion_8()
+
     elif command == '9':
         pass
     elif command == '10':
