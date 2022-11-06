@@ -69,11 +69,16 @@ def getPokemonGeneration():
     
     #se usa el segundo api, para añadir las habilidades de cada pokemon en lista_especies
     for pokemon in lista_especies:
-        sub_response= requests.get(url_pokeapi_pokemon + pokemon)
-        data_2 = sub_response.json()
-        lista_habilidades = [habilidad["ability"]['name'] for habilidad in data_2['abilities']]
-        print(pokemon)
-        print(lista_habilidades)
+        try:
+            sub_response= requests.get(url_pokeapi_pokemon + pokemon)
+            data_2 = sub_response.json()
+            lista_habilidades = [habilidad["ability"]['name'] for habilidad in data_2['abilities']]
+            imagenes= data_2['sprites']['front_default']
+            print(pokemon)
+            print(lista_habilidades)
+            print(imagenes)
+        except:
+            pass
     salir()
    
         
@@ -103,12 +108,16 @@ def getPokemonSheps():
     print('Los pokemons que se son de forma', forma, 'són: \n ')  
     #se usa el segundo api, para añadir las habilidades de cada pokemon en lista_especies
     for pokemon in lista_especies:     
-        sub_response= requests.get(url_pokeapi_pokemon + pokemon)
-        data_3 = sub_response.json()
-        Habilidad = [habilidad["ability"]['name'] for habilidad in data_3['abilities']]
-        
-        print(pokemon)
-        print(Habilidad)
+        try:
+            sub_responser= requests.get(url_pokeapi_pokemon + pokemon)
+            data_3 = sub_responser.json()
+            Habilidad = [habilidad["ability"]['name'] for habilidad in data_3['abilities']]
+            imagenes= data_3['sprites']['front_default']
+            print(pokemon)
+            print(Habilidad)
+            print(imagenes)
+        except:
+            pass
     salir()
   
 
@@ -134,12 +143,16 @@ def getPokemonAbility():
     print('Los pokemons que se son de habilidad', Habilidad, 'són: \n ')  
     #se usa el segundo api, para añadir las habilidades de cada pokemon en lista_especies
     for pokemon in lista_especies:  
-        sub_response= requests.get(url_pokeapi_pokemon + pokemon)
-        data_3 = sub_response.json()
-        Habilidad = [habilidad["ability"]['name'] for habilidad in data_3['abilities']]
-        
-        print(pokemon)
-        print(Habilidad)   
+        try:
+            sub_response= requests.get(url_pokeapi_pokemon + pokemon)
+            data_3 = sub_response.json()
+            Habilidad = [habilidad["ability"]['name'] for habilidad in data_3['abilities']]
+            imagenes= data_3['sprites']['front_default']
+            print(pokemon)
+            print(Habilidad)
+            print(imagenes)
+        except:
+            pass
         
     salir()
 #getPokemonAbility()
@@ -162,12 +175,16 @@ def getPokemonHabitat():
     print('Los pokemons que se son de Habitad', Habitad, 'són: \n ')  
     #se usa el segundo api, para añadir las habilidades de cada pokemon en lista_especies
     for pokemon in lista_especies:     
-        sub_response= requests.get(url_pokeapi_pokemon + pokemon)
-        data_3 = sub_response.json()
-        Habilidad = [habilidad["ability"]['name'] for habilidad in data_3['abilities']]
-        
-        print(pokemon)
-        print(Habilidad)
+        try:
+            sub_response= requests.get(url_pokeapi_pokemon + pokemon)
+            data_3 = sub_response.json()
+            Habilidad = [habilidad["ability"]['name'] for habilidad in data_3['abilities']]
+            imagenes= data_3['sprites']['front_default']
+            print(pokemon)
+            print(Habilidad)
+            print(imagenes)
+        except:
+            pass
         
     salir()
 #getPokemonHabitat()
@@ -190,12 +207,16 @@ def getPokemonType():
     print('Los pokemons que se son de tipo', tipo, 'són: \n ')  
     #se usa el segundo api, para añadir las habilidades de cada pokemon en lista_especies
     for pokemon in lista_especies:    
-        sub_response= requests.get(url_pokeapi_pokemon + pokemon)
-        data_3 = sub_response.json()
-        Habilidad = [habilidad["ability"]['name'] for habilidad in data_3['abilities']]
-        
-        print(pokemon)
-        print(Habilidad) 
+        try:
+            sub_response= requests.get(url_pokeapi_pokemon + pokemon)
+            data_3 = sub_response.json()
+            Habilidad = [habilidad["ability"]['name'] for habilidad in data_3['abilities']]
+            imagenes= data_3['sprites']['front_default']
+            print(pokemon)
+            print(Habilidad)
+            print(imagenes)
+        except:
+            pass
         
     salir()
 #getPokemonType()
