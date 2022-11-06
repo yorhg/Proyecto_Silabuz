@@ -18,7 +18,7 @@ def menu():
         '[7]Buscar libros por autor, editorial o género\n', 
         '[8]Buscar libros por número de autores\n',
         '[9]Editar o actualizar datos de un libro\n',
-        '[10s]Guardar libros en archivo de disco duro\n',
+        '[10]Guardar libros en archivo de disco duro\n',
         '[s]Salir del Menu'
         )
 
@@ -128,7 +128,74 @@ def Opcion_8():
         lista = ast.literal_eval(linea)
         if Buscador == len(lista):
             asd = df[df['autor(es)'] == linea]
-            print(asd)  
+            print(asd)
+
+def opcion_9():
+    print(
+        'Selecciona una opción:\n',
+        '[1]Modificar titulo\n',
+        '[2]Modificar genero\n',
+        '[3]Modificar ISBN\n',
+        '[4]Modificar editorial\n',
+        '[5]Modificar autor(es)\n',
+        '[6]Volver al MENU'
+        )
+    Result = int(input('Ingresa una opción\n->'))
+    filename = "Libros.csv"
+    datos=pd.read_csv('Libros.csv', header=0)
+
+    df = pd.read_csv(filename)
+    if Result == 1:
+        df=pd.DataFrame(datos)
+        print(datos)
+        valin = input('Ingresa el dato a cambiar:\n->')
+        valout = input('Ingresa el dato que lo reemplazará:\n->')
+        df.loc[df['titulo'] == valin, "titulo"] = valout
+        df.to_csv(filename, index=False)
+        opcion_9()
+
+    elif Result == 2:
+        df=pd.DataFrame(datos)
+        print(datos)
+        valin = input('Ingresa el dato a cambiar:\n->')
+        valout = input('Ingresa el dato que lo reemplazará:\n->')
+        df.loc[df['genero'] == valin, "genero"] = valout
+        df.to_csv(filename, index=False)
+        opcion_9()
+
+    elif Result == 3:
+        df=pd.DataFrame(datos)
+        print(datos)
+        valin = input('Ingresa el dato a cambiar:\n->')
+        valout = input('Ingresa el dato que lo reemplazará:\n->')
+        df.loc[df['ISBN'] == valin, "ISBN"] = valout
+        df.to_csv(filename, index=False)
+        opcion_9()
+
+    elif Result == 4:
+        df=pd.DataFrame(datos)
+        print(datos)
+        valin = input('Ingresa el dato a cambiar:\n->')
+        valout = input('Ingresa el dato que lo reemplazará:\n->')
+        df.loc[df['editorial'] == valin, "editorial"] = valout
+        df.to_csv(filename, index=False)
+        opcion_9()
+
+    elif Result == 5:
+        df=pd.DataFrame(datos)
+        print(datos)
+        valin = input('Ingresa el dato a cambiar:\n->')
+        valout = input('Ingresa el dato que lo reemplazará:\n->')
+        df.loc[df['autor(es)'] == valin, "autor(es)"] = valout
+        df.to_csv(filename, index=False)
+        opcion_9()
+
+    elif Result == 6:
+        run()
+
+    else:
+        print('Valor ingresado incorrecto')
+        opcion_9()
 
 def opcion_4():
     l1 = []
@@ -182,7 +249,8 @@ def run():
         Opcion_8()
 
     elif command == '9':
-        pass
+        opcion_9()
+
     elif command == '10':
         pass
     elif command == 'S':
