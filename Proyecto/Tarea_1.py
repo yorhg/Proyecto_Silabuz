@@ -3,7 +3,8 @@ import csv
 import time
 import os
 import ast
-#Opciones del menú
+
+#lista de libros por guardar
 
 def menu():
     print(
@@ -22,6 +23,7 @@ def menu():
         '[s]Salir del Menu'
         )
 
+
 def Opcion_1():
     archivo = input('Ingresar nombre del archivo(incluyendo ".csv") o ruta de acceso absoluta:\n->')
     results = []
@@ -36,16 +38,14 @@ def Opcion_2():
     datos=pd.read_csv('Libros.csv', header=0)
     print(datos)
 
-
+bibliotecaList = []
 def Opcion_3():
     go = True
     while go == True:
-        
-        bibliotecaList = []
         ids = {}
         ids['id'] = input('introdusca el ID del libro a agregar:\n-> ')
         ids['titulo'] = input('introdusca el titulo del libro a agregar(No usar tíldes):\n-> ')
-        ids['genero'] = input('introdusca el género del libro a agregar(No usar tíldes):\n-> ')
+        ids['genero'] = input('introdusca el género del libro a agregar(Nx usar tíldes):\n-> ')
         ids['ISBN'] = input('introdusca el ISBN del libro a agregar:\n-> ')
         ids['editorial'] = input('introdusca el editorial del libro a agregar(No usar tíldes):\n-> ')
         ids['autor(es)'] = []
@@ -57,17 +57,38 @@ def Opcion_3():
             else:
                 ids['autor(es)'].append(autores)        
         bibliotecaList.append(ids)
-        with open("Libros.csv", "a", newline='') as f:
-            w = csv.DictWriter(f, bibliotecaList[0].keys())
-            for a in bibliotecaList:
-                w.writerow(a)
-            print(bibliotecaList)
+        print("Libros Almacenados temporalmente")
         repetir = input("Escriba 'si' para continuar registrando o 'x' para salir al menu: ")
+
         if repetir != "si":
             go = False 
+            print(bibliotecaList)
             run()
+            
 
-
+def save_books_on_csv():
+    if not bibliotecaList:
+            print("------Agregue datos en la opcion 3 del menu!----------")
+            input("Presione ENTER para volver al menu")
+            run()
+    else:
+        print("---------Libros Agregados-----------")
+        for a in bibliotecaList:
+            for c,v in a.items():
+                print (f"{c} : {v}")
+            print ("-------------------------")
+        with open("Libros.csv", "a", newline='') as f:
+            w = csv.DictWriter(f, bibliotecaList[0].keys())
+            r = input("Estas seguro que quieres Guardar estos datos en un archivo CSV? escriba si/no: ")
+            if r == "si":
+                for a in bibliotecaList:
+                    w.writerow(a)
+                print("Se agregaron los archivos")
+                   
+            else:
+                run() 
+     
+  
 def Opcion_5():
 
     datos = pd.read_csv('Libros.csv')
@@ -252,7 +273,7 @@ def run():
         opcion_9()
 
     elif command == '10':
-        pass
+        save_books_on_csv()
     elif command == 'S':
         os._exit(1)
     else:
