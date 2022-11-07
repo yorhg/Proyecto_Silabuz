@@ -1,4 +1,5 @@
 id,titulo,genero,ISBN,editorial,autor(es)
-157,Acleman,Poesia,978-612-4289-67-5,Ediciones Vicio Perpetuo,['Huaman Arismendi Luciano']
+157,Aclemans,Poesia,978-612-4289-67-5,Ediciones Vicio Perpetuo,['Huaman Arismendi Luciano']
 158,Preludios y fugas,Poesia,978-612-4416-37-8,Pesopluma SAC,['Hernandez Camarero Luis Guillermo']
-159,pijamada de monstruos,Lenguaje,978-612-5071-67-5,Grupo Editorial Caja Negra SAC,['Calvo PerezMaria Daniela']
+159,pijamada de monstruos,Lenguajes,978-612-5071-67-5,Grupo Editorial Caja Negra SAC,['Calvo PerezMaria Daniela']
+a,a,a,a,a,['a']
