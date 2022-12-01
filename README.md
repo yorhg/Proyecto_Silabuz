@@ -1,4 +1,4 @@
-# Proyecto_Silabuz
+# Proyecto_Phyton
 PARTICIPANTES: <br>
 -César Yaret Chuica Cordero<br>
 -Yorhg Bryan Guevara Hurtado<br>
